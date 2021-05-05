@@ -27,7 +27,7 @@
                 <div class="left_contatti">
                     <div class="nav_left">
                         <div class="div_nav_left">
-                            <div class="avatar"><img src="imgs/avatar_1.jpg" alt=""></div>  
+                            <div class="avatar"><img src="imgs/avatar_8.jpg" alt=""></div>
                         </div>
                         <div class="icone_right">
                             <i class="fas fa-circle-notch"></i>
@@ -46,18 +46,31 @@
                     </div>
                     <div class="search-chat">
                         <i class="fas fa-search"></i>
-                        <input @keyup="search_contacts" type="text" v-model="search"
-                            placeholder="Cerca o inizia una nuova chat">
+                        <input type="text" placeholder="Cerca o inizia una nuova chat">
                     </div>
-                    <div class="lista_contatti">lista</div>
+                    <!-- Inizio lista contatti -->
+                    <div class="lista_contatti" v-for="user in usersList" @click="onUserClick(user)"
+                        :class="{selected: user.avatar ===selectUser.avatar}">
+                        <div class="contacts-chat">
+                            <div class="data-contact">
+                                <div class="avatar-box">
+                                    <img :src="`imgs/avatar${user.avatar}.jpg`" alt="">
+                                </div>
+                                <div class="name-mess">
+                                    <h3>{{user.name}}</h3>
+                                    <p>Non ci sono nuovi messaggi</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <!-- Inizio Chat di destra -->
                 <div class="chat-contatti">
                     <div class="nav_chat">
                         <div class="nav_chat-left">
-                            <div class="avatar"><img src="imgs/avatar_1.jpg" alt=""></div>
+                            <div class="avatar"><img :src="`imgs/avatar${selectUser.avatar}.jpg`" alt=""></div>
                             <div class="name">
-                                <h3>Sara</h3>
+                                <h3>{{selectUser.name}}</h3>
                                 <p>Ultimo accesso oggi alle
                                     <span>16:15</span>
                                 </p>
@@ -69,7 +82,14 @@
                             <i class="fas fa-ellipsis-v"></i>
                         </div>
                     </div>
-                    <div class="text_message"></div>
+                    <div class="text_message">
+                        <div class="message" :class="{
+                            received: message.status === 'received', 
+                            sent:message.status === 'sent'}" v-for="message in selectUser.messages">{{message.text}}
+                        </div>
+                        <div class="message sent">Messaggio inviato </div>
+
+                    </div>
                     <div class="scrivi_messaggio">
                         <span><i onblur="micIcon(iIcon)" class="far fa-smile fa-"></i></span>
                         <input id="input-text" type="text" placeholder="scrivi un messaggio">
@@ -80,8 +100,10 @@
         </div>
     </div>
 
+
     <script src="scripts/data.js"></script>
     <script src="scripts/app.js"></script>
+
 </body>
 
 </html>
