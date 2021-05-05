@@ -7,6 +7,9 @@ const app = new Vue({
     methods: {
        onUserClick(user) {
            this.selectUser = user
+       },
+       formatTime(stringDate) {
+           return moment(stringDate, "DD/MM/YYYY HH:mm:ss").format("HH:mm")
        }
     },
     mounted(){

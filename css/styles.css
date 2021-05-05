@@ -41,6 +41,7 @@
     height: 100%;
     background-color:white;
     flex-direction: column;
+    overflow: auto;
 }
 
 .chat-contatti {
@@ -75,6 +76,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    height: 100vh;
 }
 
 
@@ -82,7 +84,7 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
-    width: 40%;
+    width: 20%;
 
 }
 
@@ -98,6 +100,10 @@
     align-items: center;
     width: 30%;
     height: 100%;
+}
+
+.icone_right i {
+    color: rgba(0, 0, 0, 0.5);
 }
 
 /* Sezione notifiche */
@@ -178,6 +184,11 @@
 .icon-box.right{
     width: 18%;
     justify-content: space-evenly;
+    display: flex;
+}
+
+.icon-box.right i {
+    color: rgba(0, 0, 0, 0.5);
 }
 
 
@@ -243,6 +254,14 @@
     position: relative;
 }
 
+.message .time {
+    position: absolute;
+    bottom: 4px;
+    font-size: 10px;
+    right: 4px;
+    color: lightgrey;
+}
+
 .message.received {
     background-color: white;
     border-top-left-radius: 0;
@@ -255,7 +274,6 @@
     border-top-right-radius: 0;
     margin-right: 14px;
 }
-
 
 .lista_contatti.selected {
 background-color: rgb(235, 235, 205);

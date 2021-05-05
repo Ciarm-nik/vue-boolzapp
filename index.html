@@ -66,32 +66,36 @@
                 </div>
                 <!-- Inizio Chat di destra -->
                 <div class="chat-contatti">
-                    <div class="nav_chat">
-                        <div class="nav_chat-left">
-                            <div class="avatar"><img :src="`imgs/avatar${selectUser.avatar}.jpg`" alt=""></div>
-                            <div class="name">
-                                <h3>{{selectUser.name}}</h3>
-                                <p>Ultimo accesso oggi alle
-                                    <span>16:15</span>
-                                </p>
+                    <div>
+                        <div class="nav_chat">
+                            <div class="nav_chat-left">
+                                <div class="avatar"><img :src="`imgs/avatar${selectUser.avatar}.jpg`" alt=""></div>
+                                <div class="name">
+                                    <h3>{{selectUser.name}}</h3>
+                                    <p>Ultimo accesso oggi alle
+                                        <span>16:15</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="icon-box right">
+                                <i class="fas fa-search"></i>
+                                <i class="fas fa-paperclip"></i>
+                                <i class="fas fa-ellipsis-v"></i>
                             </div>
                         </div>
-                        <div class="icon-box right">
-                            <i class="fas fa-search"></i>
-                            <i class="fas fa-paperclip"></i>
-                            <i class="fas fa-ellipsis-v"></i>
-                        </div>
                     </div>
+
                     <div class="text_message">
                         <div class="message" :class="{
                             received: message.status === 'received', 
                             sent:message.status === 'sent'}" v-for="message in selectUser.messages">{{message.text}}
+                            <div class="time">{{formatTime(message.date)}} </div>
                         </div>
-                        <div class="message sent">Messaggio inviato </div>
+                        <!-- <div class="message sent">Messaggio inviato </div> -->
 
                     </div>
                     <div class="scrivi_messaggio">
-                        <span><i onblur="micIcon(iIcon)" class="far fa-smile fa-"></i></span>
+                        <span><i class="far fa-smile fa-"></i></span>
                         <input id="input-text" type="text" placeholder="scrivi un messaggio">
                         <i class="fas fa-microphone"></i>
                     </div>
