@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Boolzap</title>
-
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
+        integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/834474b273.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
         integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
@@ -18,13 +19,62 @@
 </head>
 
 <body>
-    <div id="app">
-        <div class="t_body">
-            <div class="green_top"></div>
-            <div class="container">
-                <div class="box">
-                    <div class="contatti"></div>
-                    <div class="chat-contatti"></div>
+    <div id="app" class="t_body">
+        <div class="green_top"></div>
+        <div class="container">
+            <div class="box">
+                <!-- Inizio Chat di sinistra -->
+                <div class="left_contatti">
+                    <div class="nav_left">
+                        <div class="div_nav_left">
+                            <div class="avatar"><img src="imgs/avatar_1.jpg" alt=""></div>  
+                        </div>
+                        <div class="icone_right">
+                            <i class="fas fa-circle-notch"></i>
+                            <i class="fas fa-comment-alt"></i>
+                            <i class="fas fa-ellipsis-v"></i>
+                        </div>
+                    </div>
+                    <div class="notify">
+                        <div class="notify-fas">
+                            <i class="fas fa-bell-slash"></i>
+                        </div>
+                        <div class="notify-text">
+                            <h4>Ricevi notifiche di nuovi messaggi</h4>
+                            <p>Attiva notifiche desktop</p>
+                        </div>
+                    </div>
+                    <div class="search-chat">
+                        <i class="fas fa-search"></i>
+                        <input @keyup="search_contacts" type="text" v-model="search"
+                            placeholder="Cerca o inizia una nuova chat">
+                    </div>
+                    <div class="lista_contatti">lista</div>
+                </div>
+                <!-- Inizio Chat di destra -->
+                <div class="chat-contatti">
+                    <div class="nav_chat">
+                        <div class="nav_chat-left">
+                            <div class="avatar"><img src="imgs/avatar_1.jpg" alt=""></div>
+                            <div class="name">
+                                <h3>Sara</h3>
+                                <p>Ultimo accesso oggi alle
+                                    <span>16:15</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="icon-box right">
+                            <i class="fas fa-search"></i>
+                            <i class="fas fa-paperclip"></i>
+                            <i class="fas fa-ellipsis-v"></i>
+                        </div>
+                    </div>
+                    <div class="text_message"></div>
+                    <div class="scrivi_messaggio">
+                        <span><i onblur="micIcon(iIcon)" class="far fa-smile fa-"></i></span>
+                        <input id="input-text" type="text" placeholder="scrivi un messaggio">
+                        <i class="fas fa-microphone"></i>
+                    </div>
                 </div>
             </div>
         </div>
