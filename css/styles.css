@@ -50,8 +50,7 @@
     background-color: rgba(229,220,213,255);
     flex-direction: column;
     justify-content: space-between;
-    background-image: url(https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png)
-
+    background-image: url("../imgs/mine.jpg");
 }
 
 .nav_left {
@@ -165,7 +164,7 @@
 /* Inizio chat di destra */
 
 .nav_chat {
-    height: 100px;
+    height: 90px;
     width: 100%;
     background-color: rgba(237,237,237,255);
     display: flex;

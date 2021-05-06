@@ -81,4 +81,21 @@ const globalUsersList = [
             }
         ],
     },
+    {
+        name: 'Luigi',
+        avatar: '_5',
+        visible: true,
+        messages: [
+            {
+                date: '10/01/2020 15:30:55',
+                text: 'Lo sai che ha aperto una nuova pizzeria?',
+                status: 'sent'
+            },
+            {
+                date: '10/01/2020 15:50:00',
+                text: 'Si, ma preferirei andare al cinema',
+                status: 'received'
+            }
+        ],
+    },
 ];
