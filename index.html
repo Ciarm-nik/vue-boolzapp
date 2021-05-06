@@ -61,7 +61,7 @@
                                     </div>
                                     <div class="name-mess">
                                         <h3>{{user.name}}</h3>
-                                        <p>Non ci sono nuovi messaggi</p>
+                                        <p>{{user.messages[user.messages.length - 1].text}}</p>
                                     </div>
                                 </div>
                             </div>
@@ -89,11 +89,11 @@
                         </div>
                     </div>
 
-                    <div class="text_message">
+                    <div class="text_message" ref="textScroll"> 
                         <div class="message" :class="{
                             received: message.status === 'received', 
                             sent:message.status === 'sent'}" v-for="message in selectUser.messages">{{message.text}}
-                            <div class="time">{{formatTime(message.date)}} </div>
+                            <div class="time">{{formatTime(message.date)}}</div>
                         </div>
                         <!-- <div class="message sent">Messaggio inviato </div> -->
 

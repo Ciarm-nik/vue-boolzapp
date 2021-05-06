@@ -17,6 +17,8 @@ const app = new Vue({
         }
     },
     methods: {
+
+        // Nel momento che clicco sull'utente va a selezionare e salvare tutto l'oggetto
         onUserClick(user) {
             this.selectUser = user
         },
@@ -35,14 +37,24 @@ const app = new Vue({
 
             this.newMsgText = "";
 
+            this.scroll();
+
             setTimeout(() => {
                 const newRespMsg = {
                     date: moment().format("DD/MM/YYYY HH:mm:ss"),
-                    text: "OK",
+                    text: "OK. Va bene",
                     status: 'received'
                 };
                 this.selectUser.messages.push(newRespMsg);
+
+                this.scroll();
             },1000);
+        },
+        scroll(){
+            setTimeout(( )=>{
+               const htmlElement = this.$refs.textScroll;
+               htmlElement.scrollTop = htmlElement.scrollHeight;
+            },100);
         }
     },
 // Con questo mounted appare il primo utente della chat all'avvio della pagina
