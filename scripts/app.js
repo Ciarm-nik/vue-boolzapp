@@ -55,6 +55,40 @@ const app = new Vue({
                const htmlElement = this.$refs.textScroll;
                htmlElement.scrollTop = htmlElement.scrollHeight;
             },100);
+        },
+        getMsgClasses(message) {
+            return{
+                received: message.status === 'received', 
+                sent:message.status === 'sent'}
+        },
+        onMsgClick(message, event) {
+            this.$set(message, "showPopup", true);
+
+            event.currentTarget.focus()
+        },
+        onMouseOut(message) {
+            this.$set(message, "showPopup", false)
+        },
+        onPopupClick(message) {
+            message.showPopup = false;
+        },
+        onDeleteClick(msgIndex) {
+            this.selectUser.messages.splice(msgIndex, 1)
+        },
+        getLastMsg(messages) {
+            if (messages.length === 0) {
+                return  "Nessun messaggio disponibile"
+            }
+            const lastMsg = messages[messages.length - 1];
+            const formatteDate = this.formatTime(lastMsg.date);
+
+            let trimmedMsg = lastMsg.text.slice(0, 30);
+
+            if (lastMsg.text.length > 30) {
+                trimmedMsg += "...";
+            }
+
+            return trimmedMsg + " - " + formatteDate;
         }
     },
 // Con questo mounted appare il primo utente della chat all'avvio della pagina

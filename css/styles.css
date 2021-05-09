@@ -253,6 +253,10 @@
     position: relative;
 }
 
+.message:hover .pop-active {
+    opacity: 0.4;
+}
+
 .message .time {
     position: absolute;
     bottom: 4px;
@@ -274,6 +278,49 @@
     margin-right: 14px;
 }
 
+.message.sent .popup {
+    top: 18px;
+    right: 8px;
+}
+
+.message.message.received .popup {
+    top: 18px;
+    left: 84px;
+}
+
 .lista_contatti.selected {
 background-color: rgb(235, 235, 205);
+}
+
+.popup{
+    position: absolute;
+    width: 180px;
+    border-radius: 5px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+    background-color: white;
+    overflow: hidden;
+    z-index: 10;
+}
+
+.pop-active {
+    position: absolute;
+    right: 4px;
+    top: 4px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.popup ul {
+    margin: 0;
+    list-style: none;
+}
+
+.popup ul li {
+    padding: 14px 14px;
+    transition: background-color .3s;
+    cursor: pointer;
+}
+
+.popup ul li:hover {
+    background-color: rgb(243,243,243);
 }
