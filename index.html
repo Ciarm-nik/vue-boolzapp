@@ -46,7 +46,8 @@
                     </div>
                     <div class="search-chat">
                         <i class="fas fa-search"></i>
-                        <input type="text" placeholder="Cerca o inizia una nuova chat" v-model="search" @keyup.esc="search =''">
+                        <input type="text" placeholder="Cerca o inizia una nuova chat" v-model="search"
+                            @keyup.esc="search =''">
                         <!-- Aggiungo un'icona x per svuotare o cancellare la ricerca -->
                         <i class="fas fa-times" v-if="search" @click="search =''"></i>
                     </div>
@@ -61,7 +62,7 @@
                                     </div>
                                     <div class="name-mess">
                                         <h3>{{user.name}}</h3>
-                                        <p>{{user.messages[user.messages.length - 1].text}}</p>
+                                        <p>{{ getLastMsg(user.messages) }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -89,18 +90,31 @@
                         </div>
                     </div>
 
-                    <div class="text_message" ref="textScroll"> 
-                        <div class="message" :class="{
-                            received: message.status === 'received', 
-                            sent:message.status === 'sent'}" v-for="message in selectUser.messages">{{message.text}}
+                    <div class="text_message" ref="textScroll">
+                        <div class="message" :class="getMsgClasses(message)" v-for="(message,index) in selectUser.messages" :key="index"
+                            tabindex="-1" 
+                            @click="onMsgClick(message, $event)" 
+                            @blur="onMouseOut(message)">
+                            {{message.text}}
                             <div class="time">{{formatTime(message.date)}}</div>
+
+                            <i class="fas fa-chevron-down pop-active "></i>
+
+                            <div class="popup" v-if="message.showPopup" @click.stop="onPopupClick(message)">
+                                <ul>
+                                    <li>Message info</li>
+                                    <li @click="onDeleteClick(index)">Delete message</li>
+
+                                </ul>
+                            </div>
                         </div>
                         <!-- <div class="message sent">Messaggio inviato </div> -->
 
                     </div>
                     <div class="scrivi_messaggio">
                         <span><i class="far fa-smile fa-"></i></span>
-                        <input id="input-text" type="text" placeholder="scrivi un messaggio" @keyup.enter="sendMessage" v-model="newMsgText">
+                        <input id="input-text" type="text" placeholder="scrivi un messaggio" @keyup.enter="sendMessage"
+                            v-model="newMsgText">
                         <i class="fas fa-microphone"></i>
                     </div>
                 </div>
